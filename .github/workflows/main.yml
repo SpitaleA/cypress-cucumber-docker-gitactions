@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browsers: [firefox, chrome]
+        browsers: [firefox, chrome, edge]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
