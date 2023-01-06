@@ -5,6 +5,10 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browsers: [firefox, chrome]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -13,5 +17,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5 # use the explicit version number
         with:
+          browser: ${{ matrix.browsers }}
           build: npm install
           start: npm run cypress:run
